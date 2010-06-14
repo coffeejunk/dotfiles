@@ -24,7 +24,7 @@ alias vlc="/Applications/VLC.app/Contents/MacOS/VLC --extraintf"
 alias xspim="/Applications/spim/bin/xspim"
 alias spim="spim -file"
 
-# Rails aliase# Reload .bashrc
+# Reload .bashrc
 alias refresh='. ~/.bashrc'
 
 #beauty
