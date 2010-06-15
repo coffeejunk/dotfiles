@@ -9,13 +9,24 @@ export HISTCONTROL=erasedups	# when adding an item to history, delete itentical 
 export HISTSIZE=10000		# save 10000 items in history
 shopt -s histappend		# append history to ~\.bash_history when exiting shell
 
+set completion-ignore-case On
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+	. `brew --prefix`/etc/bash_completion
+fi
+
+# because spellchecking is nice :)
+shopt -s cdspell
+
 # Lazy aliases
 alias l='ls -lG'
 alias ls='ls -G'
 alias la='ls -Al'
 alias ..='cd ..'
-alias tree='tree -C'
+alias tree='tree -Ca -I ".git|.svn|*.pyc|*.swp"'
 alias trls='tree -C | less -R'	# -C outputs colour, -R makes less understand color
+alias mkdir="mkdir -vp"
+
+# aliases for the universtiy an so..
 alias kiwiproj="./KiWi-FS.sh"
 alias ra="cd ~/Dropbox/LMU/MI/Rech*"
 alias promo="cd ~/Dropbox/LMU/MI/Pro*"

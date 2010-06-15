@@ -1,7 +1,13 @@
 [user]
-	name = coffeejunk
+	name = Maximilian Haack
 	email = mxhaack@gmail.com
 [alias]
 	co = checkout
 [apply]
 	whitespace = nowarn
+
+[core]
+  excludesfile = ~/.gitignore
+
+[github]
+	user = coffeejunk
