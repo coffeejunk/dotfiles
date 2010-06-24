@@ -34,12 +34,13 @@ alias sml="ledit /usr/local/smlnj-110.72/bin/sml"
 alias vlc="/Applications/VLC.app/Contents/MacOS/VLC --extraintf"
 alias xspim="/Applications/spim/bin/xspim"
 alias spim="spim -file"
+alias dev="cd ~/Dropbox/Development"
 
 # git aliases
 alias gst='git status'
 alias gl='git pull'
 alias gp='git push'
-alias gd='git diff | mate'
+alias gd='git diff | mvim'
 alias gc='git commit -v'
 alias gca='git commit -v -a'
 alias gb='git branch'
