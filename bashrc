@@ -1,8 +1,8 @@
 echo "good day master!"
-source .profile
+source ~/.profile
 # Bash customisations to be syncronised between machines.
 export PS1='\[\e[1;31m\][\u@\h \W]\$\[\e[0m\] '
-export EDITOR='/usr/local/bin/vim'
+export EDITOR='mvim -f'
 
 # History
 export HISTCONTROL=erasedups	# when adding an item to history, delete itentical commands upstream
