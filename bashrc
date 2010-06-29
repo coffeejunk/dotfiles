@@ -27,7 +27,7 @@ alias trls='tree -C | less -R'	# -C outputs colour, -R makes less understand col
 alias mkdir="mkdir -vp"
 
 # aliases for the universtiy an so..
-alias kiwiproj="./KiWi-FS.sh"
+alias kiwiproj="sh ~/dotfiles/bin/KiWi-FS.sh"
 alias ra="cd ~/Dropbox/LMU/MI/Rech*"
 alias promo="cd ~/Dropbox/LMU/MI/Pro*"
 alias sml="ledit /usr/local/smlnj-110.72/bin/sml"
