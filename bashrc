@@ -31,6 +31,12 @@ alias mkdir="mkdir -vp"
 alias ql="qlmanage -p 2>/dev/null"
 alias preview="groff -Tps > /tmp/tmp.ps && open -a Preview /tmp/tmp.ps"
 
+# function to make a directory and cd into with a single command
+function take {
+    mkdir $1
+    cd $1
+}
+
 # make a pdf from the specified manpage
 man2pdf () { 
 	man $1 -t | ps2pdf - $1.pdf
