@@ -2,7 +2,7 @@
 # based on the install script from http://github.com/adamv
 
 function relink() {
-  if [-e $1] ; then rm -i $1; fi
+  if [ -e $1 ] ; then rm -i $1; fi
   ln -sn $2 $1
 }
 

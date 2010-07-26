@@ -30,6 +30,7 @@ alias trls='tree -C | less -R'	# -C outputs colour, -R makes less understand col
 alias mkdir="mkdir -vp"
 alias ql="qlmanage -p 2>/dev/null"
 alias preview="groff -Tps > /tmp/tmp.ps && open -a Preview /tmp/tmp.ps"
+alias :q="exit"
 
 # function to make a directory and cd into with a single command
 function take {
@@ -80,7 +81,7 @@ kiwifs () {
 # aliases for the universtiy an so..
 alias ra="cd ~/Dropbox/LMU/MI/Rech*"
 alias promo="cd ~/Dropbox/LMU/MI/Pro*"
-alias sml="ledit /usr/local/smlnj-110.72/bin/sml"
+alias sml="ledit /usr/local/Cellar/smlnj/110.72/libexec/bin/sml"
 alias vlc="/Applications/VLC.app/Contents/MacOS/VLC --extraintf 1"
 alias xspim="/Applications/spim/bin/xspim"
 alias spim="spim -file"
