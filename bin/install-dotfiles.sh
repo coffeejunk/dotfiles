@@ -14,4 +14,5 @@ relink ~/.gitignore ~/dotfiles/global-git-ignore
 relink ~/.vim ~/dotfiles/vim
 relink ~/.vimrc ~/dotfiles/vimrc
 relink ~/.gvimrc ~/dotfiles/gvimrc
+relink ~/.profile ~/dotfiles/profile
 relink /usr/local/bin/man2pdf ~/dotfiles/bin/man2pdf.sh
