@@ -11,3 +11,7 @@
 
 [github]
 	user = coffeejunk
+[color]
+	diff = auto
+	status = auto
+	branch = auto
