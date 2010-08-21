@@ -70,7 +70,8 @@ noremap <unique> <script> <Plug>MakeGreen <SID>Make
 noremap <SID>Make :call <SID>RunMake()<CR>
 
 if !hasmapto('<Plug>MakeGreen')
-  map <unique> <silent> <Leader>t <Plug>MakeGreen
+  " this was a t but conflicts with something else
+  map <unique> <silent> <Leader>e <Plug>MakeGreen
 endif
 " }}}1
 
