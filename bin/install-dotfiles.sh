@@ -12,7 +12,7 @@ relink ~/.bashrc ~/dotfiles/bashrc
 relink ~/.gitconfig ~/dotfiles/gitconfig
 relink ~/.gitignore ~/dotfiles/global-git-ignore
 relink ~/.vim ~/dotfiles/vim
-relink ~/.vimrc ~/dotfiles/vimrc
-relink ~/.gvimrc ~/dotfiles/gvimrc
+relink ~/.vimrc ~/dotfiles/vim/vimrc
+relink ~/.gvimrc ~/dotfiles/vim/gvimrc
 relink ~/.profile ~/dotfiles/profile
 relink /usr/local/bin/man2pdf ~/dotfiles/bin/man2pdf.sh
