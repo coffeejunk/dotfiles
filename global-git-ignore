@@ -6,6 +6,9 @@ build/*
 # old skool
 .svn
 
+#vim noise
+*.swp
+
 # osx noise
 .DS_Store
 profile
