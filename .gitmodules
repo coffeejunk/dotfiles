@@ -1,0 +1,3 @@
+[submodule "vim/janus"]
+	path = vim/janus
+	url = git@github.com:coffeejunk/janus.git
