@@ -1,0 +1,24 @@
+[user]
+	name = Maximilian Haack
+	email = mxhaack@gmail.com
+[alias]
+	co = checkout
+[apply]
+	whitespace = nowarn
+
+[core]
+  excludesfile = ~/.gitignore
+	editor = mvim -f
+
+[github]
+	user = coffeejunk
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[difftool "Kaleidoscope"]
+	cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
+[difftool]
+	prompt = false
+[diff]
+	tool = Kaleidoscope
