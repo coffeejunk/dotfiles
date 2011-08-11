@@ -29,7 +29,7 @@ PYTHON=/usr/local/Cellar/python/2.7.1/bin/
 
 # putting it all together
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/sbin:$PATH
-export PATH=$PATH:$CABAL:$LATEX:$X11:$ANDROID:$PYTHON
+export PATH=$PATH:$CABAL:$LATEX:$X11:$ANDROID:$PYTHON:~/dotfiles/bin
 
 # vi bindings..
 # bindkey -v

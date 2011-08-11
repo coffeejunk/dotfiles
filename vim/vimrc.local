@@ -33,3 +33,12 @@ nnoremap <leader>v V`]
 
 " use ack
 nnoremap <leader>a :Ack
+
+call togglebg#map("<F5>")
+
+" clear search
+map <leader><space> :noh<cr>
+
+filetype plugin on
+let g:rubycomplete_classes_in_global = 1
+let g:rubycomplete_rails = 1

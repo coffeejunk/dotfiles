@@ -1,4 +1,3 @@
-echo "good day master!"
 source ~/.profile
 # Bash customisations to be syncronised between machines.
 export PS1='\[\e[1;31m\][\u@\h \W]\$\[\e[0m\] '
@@ -19,7 +18,6 @@ shopt -s cdspell
 
 # Lazy aliases
 alias cls="clear"
-alias vim="mvim"
 alias v="mvim"
 alias l='ls -lG'
 alias ls='ls -G'
@@ -33,7 +31,6 @@ alias ql="qlmanage -p 2>/dev/null"
 alias preview="groff -Tps > /tmp/tmp.ps && open -a Preview /tmp/tmp.ps"
 alias :q="exit"
 alias scpresume="rsync --partial --progress --rsh=ssh"
-alias vi="mvim"
 
 # function to make a directory and cd into with a single command
 function take {
@@ -70,24 +67,8 @@ bman () {
 	gunzip < `man -w $@` | groff -Thtml -man | bcat
 }
 
-# mount the kiwi project files
-kiwifs () {
-	directory="/Volumes/KiWi"
-	if [ -w $directory ];then
-		echo "already mounted"
-	else 
-		mkdir -p $directory 
-		sshfs -p 54321 root@totoya.pms.ifi.lmu.de:/root/KiWi $directory 
-	fi
-}
-
 # aliases for the universtiy an so..
-alias sep="cd ~/Dropbox/LMU/MI/3.*/SEP"
-alias sml="ledit /usr/local/Cellar/smlnj/110.72/libexec/bin/sml"
 alias vlc="/Applications/VLC.app/Contents/MacOS/VLC --extraintf 1"
-alias xspim="/Applications/spim/bin/xspim"
-alias spim="spim -file"
-alias dev="cd ~/Dropbox/Development"
 
 # git aliases
 alias gst='git status'
@@ -107,3 +88,6 @@ alias refresh='. ~/.bashrc'
 #beauty
 export CLICOLOR=1
 export LSCOLORS=DxGxcxdxCxegedabagacad
+
+#rvm
+[[ -s /Users/max/.rvm/scripts/rvm ]] && source /Users/max/.rvm/scripts/rvm  # This loads RVM into a shell session.
