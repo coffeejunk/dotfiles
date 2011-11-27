@@ -151,3 +151,25 @@ set cul
 
 " reselect pasted text
 nnoremap <leader>v V`]
+
+" run tests
+map <leader><CR> :call RunTest()<cr>
+
+function! RunTest()
+  :w
+  ":silent !clear
+  let filename = @%
+  if filename =~ 'test_'
+    " test_unit
+    :!clear && ruby -Ilib:bin:test:. -rtest/unit %
+  elseif filename =~ '_spec'
+    " rpsec
+    :!clear && rspec -c %
+  elseif filename =~ '.feature'
+    " cucumber
+    :!clear && cucumber %
+  else
+    :echo 'not a testfile'
+    " check for test file with name
+  endif
+endfunction
