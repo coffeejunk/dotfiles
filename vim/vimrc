@@ -10,7 +10,7 @@ syntax on
 " line length
 set formatoptions=qrn1
 set textwidth=79
-set colorcolumn=85
+set colorcolumn=80
 
 " setup the leader key
 let mapleader = ","
@@ -68,18 +68,6 @@ set backspace=indent,eol,start
 " load the plugin and indent settings for the detected filetype
 filetype plugin indent on
 
-" Opens an edit command with the path of the currently edited file filled in
-" Normal mode: <Leader>e
-map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
-
-" Opens a tab edit command with the path of the currently edited file filled in
-" Normal mode: <Leader>t
-map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
-
-" Inserts the path of the currently edited file into a command
-" Command mode: Ctrl+P
-cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
-
 " Enable syntastic syntax checking
 let g:syntastic_enable_signs=1
 let g:syntastic_quiet_warnings=1
@@ -93,13 +81,9 @@ color solarized
 hi CursorLine term=none cterm=none ctermbg=7
 call togglebg#map("<F5>")
 
-
 " Directories for swp files
 set backupdir=~/.vim/backup
 set directory=~/.vim/backup
-
-" % to bounce from do to end etc.
-runtime! macros/matchit.vim
 
 " Show (partial) command in the status line
 set showcmd
