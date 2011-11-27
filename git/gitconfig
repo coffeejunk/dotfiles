@@ -1,18 +1,16 @@
 [user]
-	name = Maximilian Haack
-	email = mxhaack@gmail.com
+  name = Maximilian Haack
+  email = mxhaack@gmail.com
 [alias]
-	co = checkout
+  co = checkout
 [apply]
-	whitespace = nowarn
-
+  whitespace = nowarn
 [core]
-	excludesfile = ~/.gitignore
-	editor = vim -f
-
+  excludesfile = ~/.gitignore
+  editor = vim -f
 [github]
-	user = coffeejunk
+  user = coffeejunk
 [color]
-	diff = auto
-	status = auto
-	branch = auto
+  diff = auto
+  status = auto
+  branch = auto
