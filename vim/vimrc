@@ -44,6 +44,7 @@ set laststatus=2
 
 " Command-T configuration
 let g:CommandTMaxHeight=20
+map <leader>t :CommandTFlush<cr>\|:CommandT<cr>
 
 " Remember last location in file
 if has("autocmd")
@@ -157,19 +158,66 @@ map <leader><CR> :call RunTest()<cr>
 
 function! RunTest()
   :w
-  ":silent !clear
   let filename = @%
-  if filename =~ 'test_'
-    " test_unit
-    :!clear && ruby -Ilib:bin:test:. -rtest/unit %
-  elseif filename =~ '_spec'
-    " rpsec
-    :!clear && rspec -c %
+
+  if filename =~ '_test.rb'
+    call RunTestUnit(filename)
+  elseif filename =~ '_spec.rb'
+    call RunRSpec(filename)
   elseif filename =~ '.feature'
-    " cucumber
-    :!clear && cucumber %
+    call RunCucumber(filename)
   else
-    :echo 'not a testfile'
-    " check for test file with name
+    call FindCorrespondingTest(filename)
+  endif
+endfunction
+
+function! RunRSpec(filename)
+  if filereadable("Gemfile")
+    exec ":!clear && bundle exec rspec -c " . a:filename
+  else
+    exec ":!clear && rspec -c " . a:filename
+  end
+endfunction
+
+function! RunTestUnit(filename)
+  exec ":!clear && ruby -Ilib:bin:test:. -rtest/unit " . a:filename
+endfunction
+
+function! RunCucumber(filename)
+  if filereadable("Gemfile")
+    exec ":!clear && bundle exec cucumber " . a:filename
+  else
+    exec ":!clear && cucumber " . a:filename
+  end
+endfunction
+
+function! FindCorrespondingTest(filename)
+  " file itself is not a test file
+  " try to find a corresponding test file
+  " XXX: this is pretty ugly right now but it works..
+  "
+  " BUG: produces for some files the following error:
+  "         Error detected while processing function
+  "         RunTest..FindCorrespondingTest..RunRSpec:
+  "         E486: Pattern not found: spec
+  "     although the spec runs as expected
+
+  " from app/controller/ticket.rb to ticket.rb
+  let filename = substitute(a:filename, '\w\+\/\w\+\/', '', 'g')
+
+  " find RSpec
+  let test_file = substitute(filename, '\.rb', '_spec.rb', 'g')
+  let result = system("find . | grep '" . test_file . "'")
+  if result =~ 'spec'
+    let result = substitute(result, '\n', '', g)
+    call RunRSpec(result)
+  else
+    " find Test::Unit
+    let test_file = substitute(filename, '\.rb', '_test.rb', 'g')
+    let result = system("find . | grep '" . test_file . "'")
+    if result =~ 'test'
+      let result = substitute(result, '\n', '', g)
+      call RunTestUnit(result)
+    endif
   endif
 endfunction
