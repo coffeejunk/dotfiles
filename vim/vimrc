@@ -78,8 +78,10 @@ set modeline
 set modelines=10
 
 " Default color scheme
+set background=dark
 color solarized
-hi CursorLine term=none cterm=none ctermbg=7
+set cursorline
+hi CursorLine ctermbg=0 guibg=Grey40
 call togglebg#map("<F5>")
 
 " Directories for swp files
