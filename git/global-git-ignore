@@ -16,3 +16,4 @@ build/*
 profile
 *.pyc
 *.class
+tags
