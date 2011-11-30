@@ -25,3 +25,6 @@
 [submodule "vim/bundle/vim-commentary"]
 	path = vim/bundle/vim-commentary
 	url = git://github.com/tpope/vim-commentary.git
+[submodule "vim/bundle/hammer.vim"]
+	path = vim/bundle/hammer.vim
+	url = git://github.com/robgleeson/hammer.vim.git
