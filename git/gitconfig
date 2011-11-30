@@ -3,6 +3,8 @@
   email = mxhaack@gmail.com
 [alias]
   co = checkout
+  lol = log --decorate --graph --all --pretty=format:'%h %aN: %s'
+  diffc = diff --cached
 [apply]
   whitespace = nowarn
 [core]
