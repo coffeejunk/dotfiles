@@ -159,7 +159,7 @@ nnoremap <leader>v V`]
 map <leader><CR> :call RunTest()<cr>
 
 function! RunTest()
-  :w
+  :wa
   let filename = @%
 
   if filename =~ '_test.rb'
