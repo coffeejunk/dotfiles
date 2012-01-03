@@ -1,0 +1,2 @@
+# http://www.samsarin.com/blog/2007/03/11/gnu-screen-working-with-the-scrollback-buffer/
+defscrollback 5000
