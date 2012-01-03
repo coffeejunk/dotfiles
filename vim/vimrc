@@ -228,3 +228,5 @@ endfunction
 nmap <silent> <leader>s :set spell!<CR>
 " Set region to American English
 set spelllang=en_us
+
+nnoremap <silent> <F6> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
