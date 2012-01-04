@@ -2,3 +2,6 @@ heroko/
 ssh/
 heroku
 vim/spell/
+vim/backup
+vim/.netrwhist
+zsh/work/
