@@ -34,6 +34,10 @@ source ~/.zsh/theme.zsh
 # load aliases
 source ~/.zsh/aliases.zsh
 
+if [ -e ~/.zsh/work ]; then
+  source ~/.zsh/work/*
+fi
+
 # This loads RVM into a shell session.
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 rvm default
