@@ -230,3 +230,6 @@ nmap <silent> <leader>s :set spell!<CR>
 set spelllang=en_us
 
 nnoremap <silent> <F6> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+
+" use system clipboard for yanking
+set clipboard=unnamed
