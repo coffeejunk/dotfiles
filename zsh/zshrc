@@ -35,7 +35,9 @@ source ~/.zsh/theme.zsh
 source ~/.zsh/aliases.zsh
 
 if [ -e ~/.zsh/work ]; then
-  source ~/.zsh/work/*
+  for i in `ls ~/.zsh/work`; do
+    source ~/.zsh/work/$i
+  done
 fi
 
 # This loads RVM into a shell session.
