@@ -2,9 +2,17 @@
   name = Maximilian Haack
   email = mxhaack@gmail.com
 [alias]
+  l = "!source ~/.githelpers && pretty_git_log"
+  la = !git l --all
+  aa = add --all
   co = checkout
-  lol = log --decorate --graph --all --pretty=format:'%h %aN: %s'
+  ci = commit -v
+  amend = commit -v --amend
+  di = diff
+  dc = diff --cached
   diffc = diff --cached
+  pull = pull --ff-only
+  fa = fetch --all
 [apply]
   whitespace = nowarn
 [core]
