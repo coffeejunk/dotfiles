@@ -14,3 +14,5 @@ change_git_mail() {
   ruby -e "fp = File.expand_path('~/.gitconfig'); f = File.read(fp); File.open(fp, 'w') {|file| file.puts f.gsub!(/email\s*=.*/, 'email = $1')}"
 }
 alias home="change_git_mail 'mxhaack@gmail.com'"
+
+alias remove_trailing_whitespace="find . -name \"*.rb\" -exec sed -i \"\" 's/[ ]*$//' {} \\;"
