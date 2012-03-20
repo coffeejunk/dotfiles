@@ -35,9 +35,13 @@ set incsearch
 set ignorecase
 set smartcase
 
+" allow hidden dirty buffers
+set hidden
+
 " Tab completion
 set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
+set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,*.jpg,*.png
+set wildignore+=*.gif,*.toc,*.aux,*.bbl,*.dvi,*.pdf,*.lof,*.blg
 
 " Status bar
 set laststatus=2
@@ -78,10 +82,9 @@ set modeline
 set modelines=10
 
 " Default color scheme
-set background=dark
+set background=light
 color solarized
 set cursorline
-hi CursorLine ctermbg=0 guibg=Grey40
 call togglebg#map("<F5>")
 
 " Directories for swp files
@@ -182,7 +185,7 @@ function! RunRSpec(filename)
 endfunction
 
 function! RunTestUnit(filename)
-  exec ":!clear && ruby -Ilib:bin:test:. -rtest/unit " . a:filename
+  exec ":!clear && bundle exec ruby -Ilib:bin:test:. -rtest/unit " . a:filename
 endfunction
 
 function! RunCucumber(filename)
@@ -233,3 +236,6 @@ nnoremap <silent> <F6> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 " use system clipboard for yanking
 set clipboard=unnamed
+
+" set open command for ruby_doc
+let g:ruby_doc_command='open'
