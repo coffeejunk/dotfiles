@@ -238,3 +238,9 @@ set clipboard=unnamed
 
 " set open command for ruby_doc
 let g:ruby_doc_command='open'
+
+" syntastic settings
+let g:syntastic_mode_map = { 'mode': 'active',
+                           \ 'active_filetypes': ['ruby', 'coffee', 'sass',
+                           \ 'eruby', 'haml', 'javascript', 'html'],
+                           \ 'passive_filetypes': ['puppet'] }
