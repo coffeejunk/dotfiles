@@ -9,6 +9,7 @@ alias gti='git'
 alias gst='git status'
 alias gp='git push'
 alias gb='git branch'
+alias gs="gst"
 
 change_git_mail() {
   ruby -e "fp = File.expand_path('~/.gitconfig'); f = File.read(fp); File.open(fp, 'w') {|file| file.puts f.gsub!(/email\s*=.*/, 'email = $1')}"
