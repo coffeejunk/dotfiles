@@ -245,3 +245,16 @@ let g:syntastic_mode_map = { 'mode': 'active',
                            \ 'active_filetypes': ['ruby', 'coffee', 'sass',
                            \ 'eruby', 'haml', 'javascript', 'html'],
                            \ 'passive_filetypes': ['puppet'] }
+
+" ctrl+p ignore settings
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.sass-cache/*  " MacOSX/Linux
+set wildignore+=tmp\*,*.swp,*.zip,*.exe   " Windows
+
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+  \ 'file': '\.exe$\|\.so$\|\.dll$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+
+" i hate folding.
+set nofoldenable
