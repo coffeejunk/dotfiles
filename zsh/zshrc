@@ -6,6 +6,7 @@ X11=/usr/X11/bin
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/sbin:$PATH
 export PATH=$PATH:$LATEX:$X11:~/dotfiles/bin
 export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
+export NODE_PATH=/usr/local/lib/node_modules
 
 # history
 HISTFILE=$HOME/.zsh_history
