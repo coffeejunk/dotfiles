@@ -1,6 +1,7 @@
 # Customize to your needs...
 LATEX=/usr/texbin
 X11=/usr/X11/bin
+export CLASSPATH=$CLASSPATH:/usr/local/Cellar/clojure-contrib/1.2.0/clojure-contrib.jar
 
 # putting it all together
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/sbin:$PATH
