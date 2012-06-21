@@ -4,6 +4,7 @@ X11=/usr/X11/bin
 export CLASSPATH=$CLASSPATH:/usr/local/Cellar/clojure-contrib/1.2.0/clojure-contrib.jar
 
 # putting it all together
+export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/sbin:$PATH
 export PATH=$PATH:$LATEX:$X11:~/dotfiles/bin
 export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
@@ -31,6 +32,10 @@ bindkey '^r' history-incremental-search-backward
 bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
 
+# select word style
+autoload -U select-word-style
+select-word-style bash
+
 # load theme
 source ~/.zsh/theme.zsh
 
@@ -46,3 +51,4 @@ fi
 # This loads RVM into a shell session.
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 rvm default
+
