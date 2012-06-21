@@ -2,6 +2,8 @@ alias ls='ls -G'
 alias l='ls -la'
 alias ll='ls -l'
 
+alias mongo_start="mongod --fork --config /usr/local/etc/mongod.conf --logpath /dev/null"
+alias mongo_stop="kill -2 \$(ps x | grep -v 'grep' | grep mongo | xargs | cut -d' ' -f1)"
 alias pg_start="pg_ctl -D /usr/local/var/postgres start > /dev/null"
 alias pg_stop="pg_ctl -D /usr/local/var/postgres stop > /dev/null"
 
