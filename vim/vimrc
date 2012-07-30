@@ -248,6 +248,9 @@ set nofoldenable
 " open vimrc
 nmap <leader>v :tabedit $MYVIMRC<CR>
 
+" reformat current paragraph
+nmap <leader>l gqip
+
 if has("gui_running")
   source ~/.gvimrc
 else
