@@ -49,3 +49,6 @@
 [submodule "vim/bundle/codeschool-vim-theme"]
 	path = vim/bundle/codeschool-vim-theme
 	url = git://github.com/29decibel/codeschool-vim-theme.git
+[submodule "vim/bundle/vim-eunuch"]
+	path = vim/bundle/vim-eunuch
+	url = git://github.com/tpope/vim-endwise.git
