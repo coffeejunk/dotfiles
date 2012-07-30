@@ -245,6 +245,9 @@ let g:ctrlp_custom_ignore = {
 " i hate folding.
 set nofoldenable
 
+" open vimrc
+nmap <leader>v :tabedit $MYVIMRC<CR>
+
 if has("gui_running")
   source ~/.gvimrc
 else
