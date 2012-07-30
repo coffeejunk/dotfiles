@@ -48,8 +48,11 @@ set laststatus=2
 
 " Remember last location in file
 if has("autocmd")
+  " Clear all autocmds in the group
+  autocmd!
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
     \| exe "normal g'\"" | endif
+  autocmd bufwritepost .vimrc source $MYVIMRC
 endif
 
 function s:setupWrapping()
