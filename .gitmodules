@@ -46,3 +46,6 @@
 [submodule "vim/bundle/syntastic"]
 	path = vim/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
+[submodule "vim/bundle/codeschool-vim-theme"]
+	path = vim/bundle/codeschool-vim-theme
+	url = git://github.com/29decibel/codeschool-vim-theme.git
