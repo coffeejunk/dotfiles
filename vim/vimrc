@@ -69,12 +69,8 @@ let g:syntastic_quiet_warnings=1
 set modeline
 set modelines=10
 
-" Default color scheme
 set t_Co=256
-set background=light
-color solarized
 set cursorline
-call togglebg#map("<F5>")
 
 " Directories for swp files
 set backupdir=~/.vim/backup
@@ -248,3 +244,11 @@ let g:ctrlp_custom_ignore = {
 
 " i hate folding.
 set nofoldenable
+
+if has("gui_running")
+  source ~/.gvimrc
+else
+  set background=light
+  color solarized
+  call togglebg#map("<F5>")
+endif
