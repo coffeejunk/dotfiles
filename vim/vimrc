@@ -41,7 +41,7 @@ set hidden
 " Tab completion
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,*.jpg,*.png
-set wildignore+=*.gif,*.toc,*.aux,*.bbl,*.dvi,*.pdf,*.lof,*.blg
+set wildignore+=*.gif,*.toc,*.aux,*.bbl,*.dvi,*.pdf,*.lof,*.blg,*.out,*.log
 
 " Status bar
 set laststatus=2
