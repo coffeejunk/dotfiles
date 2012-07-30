@@ -3,3 +3,5 @@ set guioptions-=r         " Remove right scrollbar
 set guioptions-=l         " Remove left scrollbar
 set guioptions-=L         " Remove left scrollbar
 set guifont=Monaco:h12    " font size
+color codeschool
+set vb
