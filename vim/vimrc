@@ -1,22 +1,21 @@
-set nocompatible
-
 " load plugins
 call pathogen#infect()
 
-set relativenumber
-set ruler
-syntax on
+"""""""""""""""""""""""""""""""""""""""""""
+" BASIC CONFIGURATION
+"""""""""""""""""""""""""""""""""""""""""""
+set nocompatible
+
+" Set encoding
+set encoding=utf-8
+
+" allow hidden dirty buffers
+set hidden
 
 " line length
 set formatoptions=qrn1
 set textwidth=79
 set colorcolumn=80
-
-" setup the leader key
-let mapleader = ","
-
-" Set encoding
-set encoding=utf-8
 
 " Whitespace stuff
 set nowrap
@@ -35,52 +34,117 @@ set incsearch
 set ignorecase
 set smartcase
 
-" allow hidden dirty buffers
-set hidden
-
-" Tab completion
-set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,*.jpg,*.png
-set wildignore+=*.gif,*.toc,*.aux,*.bbl,*.dvi,*.pdf,*.lof,*.blg,*.out,*.log
-
-" Status bar
-set laststatus=2
-
-" Remember last location in file
-if has("autocmd")
-  " Clear all autocmds in the group
-  autocmd!
-  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-    \| exe "normal g'\"" | endif
-  autocmd bufwritepost .vimrc source $MYVIMRC
-endif
-
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
-
-" load the plugin and indent settings for the detected filetype
-filetype plugin indent on
-
-" Enable syntastic syntax checking
-let g:syntastic_enable_signs=1
-let g:syntastic_quiet_warnings=1
 
 " Use modeline overrides
 set modeline
 set modelines=10
 
+" Directories for swp files
+set backup
+set backupdir=~/.vim/backup
+set directory=~/.vim/backup
+
+" Prevent Vim from clobbering the scrollback buffer. See
+" http://www.shallowsky.com/linux/noaltscreen.html
+set t_ti= t_te=
+
+" Tab completion
+set wildmode=list:longest,list:full
+set wildmenu
+
+" use system clipboard for yanking
+set clipboard=unnamed
+
+" i hate folding.
+set nofoldenable
+
+" setup the leader key
+let mapleader = ","
+
+"""""""""""""""""""""""""""""""""""""""""""
+" CUSTOM AUTOCMDS
+"""""""""""""""""""""""""""""""""""""""""""
+
+" Remember last location in file
+if has("autocmd")
+  " Clear all autocmds in the group
+  autocmd!
+
+  " Jump to last cursor position unless it's invalid or in an event handler
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal g'\"" | endif
+
+  " source .vimrc upon changes
+  autocmd bufwritepost .vimrc source $MYVIMRC
+endif
+
+"""""""""""""""""""""""""""""""""""""""""""
+" LOOKS
+"""""""""""""""""""""""""""""""""""""""""""
+
+syntax on
+
+set relativenumber
+set ruler
+
+" Status bar
+set laststatus=2
+
 set t_Co=256
 set cursorline
 
-" Directories for swp files
-set backupdir=~/.vim/backup
-set directory=~/.vim/backup
+" highlight current line
+set cul
+
+if has("gui_running")
+  source ~/.gvimrc
+else
+  set background=light
+  color solarized
+  call togglebg#map("<F5>")
+endif
 
 " Show (partial) command in the status line
 set showcmd
 
+" keep at least 3 lines around the cursor
+set scrolloff=3
+
+"""""""""""""""""""""""""""""""""""""""""""
+" MAPPINGS & SHORTCUTS
+"""""""""""""""""""""""""""""""""""""""""""
+
+" clear search
+map <leader><space> :noh<cr>
+
+" use ack
+nnoremap <leader>a :Ack
+
 " makes ,w split windows vertically
 nnoremap <leader>w <C-w>v<C-w>l
+
+" reselect pasted text
+nnoremap <leader>v V`]
+
+" open vimrc
+nmap <leader>v :tabedit $MYVIMRC<CR>
+
+" reformat current paragraph
+nmap <leader>l gqip
+
+" remove trailing whitespace
+nnoremap <silent> <F6> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+
+" spell checking
+nmap <silent> <leader>s :set spell!<CR>
+" Set region to American English
+set spelllang=en_us
+
+"""""""""""""""""""""""""""""""""""""""""""
+" MOVES
+"""""""""""""""""""""""""""""""""""""""""""
 
 " split window navigation
 nnoremap <C-h> <C-w>h
@@ -94,37 +158,28 @@ nnoremap <down> <nop>
 nnoremap <left> <nop>
 nnoremap <right> <nop>
 
-" keep at least 3 lines around the cursor
-set scrolloff=3
-
-"relative number switching
-function! g:ToggleNuMode()
-  if(&rnu == 1)
-    set nu
-  else
-    set rnu
-  endif
-endfunction
-
-nnoremap <C-a> :call g:ToggleNuMode()<cr>
-
-" clear search
-map <leader><space> :noh<cr>
+"""""""""""""""""""""""""""""""""""""""""""
+" FILETYPE SETUP
+"""""""""""""""""""""""""""""""""""""""""""
 
 filetype plugin on
+
+" load the plugin and indent settings for the detected filetype
+filetype plugin indent on
 
 " make uses real tabs
 au FileType make set noexpandtab
 
+" Enable syntastic syntax checking
+let g:syntastic_enable_signs=1
+let g:syntastic_quiet_warnings=1
+
 " Thorfile, Rakefile, Vagrantfile and Gemfile are Ruby
-au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}    set ft=ruby
+au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru} set ft=ruby
 
 " Ruby
 let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
-
-" md, markdown, and mk are markdown and define buffer-local preview
-au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} call s:setupMarkup()
 
 " add json syntax highlighting
 au BufNewFile,BufRead *.json set ft=javascript
@@ -135,16 +190,66 @@ au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
 " coffeescript styles
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
-" use ack
-nnoremap <leader>a :Ack
+"""""""""""""""""""""""""""""""""""""""""""
+" PLUGIN CONFIGURATION
+"""""""""""""""""""""""""""""""""""""""""""
 
-" highlight current line
-set cul
+set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,*.jpg,*.png
+set wildignore+=*.gif,*.toc,*.aux,*.bbl,*.dvi,*.pdf,*.lof,*.blg,*.out,*.log
 
-" reselect pasted text
-nnoremap <leader>v V`]
+" set open command for ruby_doc
+let g:ruby_doc_command='open'
 
-" run tests
+" syntastic settings
+let g:syntastic_mode_map = { 'mode': 'active',
+                           \ 'active_filetypes': ['ruby', 'coffee', 'sass',
+                           \ 'eruby', 'haml', 'javascript', 'html'],
+                           \ 'passive_filetypes': ['puppet'] }
+
+" ctrl+p ignore settings
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.sass-cache/*  " MacOSX/Linux
+set wildignore+=tmp\*,*.swp,*.zip,*.exe   " Windows
+
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+  \ 'file': '\.exe$\|\.so$\|\.dll$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+
+"""""""""""""""""""""""""""""""""""""""""""
+" FUNCTIONS
+"""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""
+" RENAME CURRENT FILE
+"""""""""""""
+function! RenameFile()
+    let old_name = expand('%')
+    let new_name = input('New file name: ', expand('%'), 'file')
+    if new_name != '' && new_name != old_name
+        exec ':saveas ' . new_name
+        exec ':silent !rm ' . old_name
+        redraw!
+    endif
+endfunction
+map <leader>n :call RenameFile()<cr>
+
+"""""""""""""
+" RELATIVE/NON RELATIVE LINE NUMBERS
+"""""""""""""
+"relative number switching
+function! g:ToggleNuMode()
+  if(&rnu == 1)
+    set nu
+  else
+    set rnu
+  endif
+endfunction
+nnoremap <C-a> :call g:ToggleNuMode()<cr>
+
+"""""""""""""
+" TEST RUNNER
+"""""""""""""
 map <leader><CR> :call RunTest()<cr>
 
 function! RunTest()
@@ -212,49 +317,3 @@ function! FindCorrespondingTest(filename)
     endif
   endif
 endfunction
-
-" spell checking
-nmap <silent> <leader>s :set spell!<CR>
-" Set region to American English
-set spelllang=en_us
-
-nnoremap <silent> <F6> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
-
-" use system clipboard for yanking
-set clipboard=unnamed
-
-" set open command for ruby_doc
-let g:ruby_doc_command='open'
-
-" syntastic settings
-let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'active_filetypes': ['ruby', 'coffee', 'sass',
-                           \ 'eruby', 'haml', 'javascript', 'html'],
-                           \ 'passive_filetypes': ['puppet'] }
-
-" ctrl+p ignore settings
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.sass-cache/*  " MacOSX/Linux
-set wildignore+=tmp\*,*.swp,*.zip,*.exe   " Windows
-
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn$',
-  \ 'file': '\.exe$\|\.so$\|\.dll$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
-
-" i hate folding.
-set nofoldenable
-
-" open vimrc
-nmap <leader>v :tabedit $MYVIMRC<CR>
-
-" reformat current paragraph
-nmap <leader>l gqip
-
-if has("gui_running")
-  source ~/.gvimrc
-else
-  set background=light
-  color solarized
-  call togglebg#map("<F5>")
-endif
