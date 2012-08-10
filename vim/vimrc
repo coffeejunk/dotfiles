@@ -190,6 +190,9 @@ au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
 " coffeescript styles
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
+" hamlc syntax highlighting
+au BufRead,BufNewFile *.hamlc set ft=haml
+
 """""""""""""""""""""""""""""""""""""""""""
 " PLUGIN CONFIGURATION
 """""""""""""""""""""""""""""""""""""""""""
@@ -207,7 +210,7 @@ let g:syntastic_mode_map = { 'mode': 'active',
                            \ 'passive_filetypes': ['puppet'] }
 
 " ctrl+p ignore settings
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.sass-cache/*  " MacOSX/Linux
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.sass-cache/*,*.DS_Store  " MacOSX/Linux
 set wildignore+=tmp\*,*.swp,*.zip,*.exe   " Windows
 
 let g:ctrlp_custom_ignore = {
