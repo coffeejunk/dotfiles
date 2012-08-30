@@ -213,6 +213,7 @@ au BufRead,BufNewFile *.hamlc set ft=haml
 
 set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,*.jpg,*.png
 set wildignore+=*.gif,*.toc,*.aux,*.bbl,*.dvi,*.pdf,*.lof,*.blg,*.out,*.log
+set wildignore+=*.gitkeep
 
 " set open command for ruby_doc
 let g:ruby_doc_command='open'
