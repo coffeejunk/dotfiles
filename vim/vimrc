@@ -101,9 +101,9 @@ set cul
 if has("gui_running")
   source ~/.gvimrc
 else
-  set background=light
-  color solarized
-  call togglebg#map("<F5>")
+  " set background=light
+  " call togglebg#map("<F5>")
+  color Tomorrow-Night
 endif
 
 " Show (partial) command in the status line
