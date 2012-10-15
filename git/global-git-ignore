@@ -17,3 +17,4 @@ profile
 *.pyc
 *.class
 tags
+.rbx
