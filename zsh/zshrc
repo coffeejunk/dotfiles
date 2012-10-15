@@ -2,14 +2,15 @@
 LATEX=/usr/texbin
 X11=/usr/X11/bin
 export CLASSPATH=$CLASSPATH:/usr/local/Cellar/clojure-contrib/1.2.0/clojure-contrib.jar
-export NODE_PATH=/usr/local/lib/node_modules
 
 # putting it all together
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/sbin:$PATH
 export PATH=$PATH:$LATEX:$X11:~/dotfiles/bin
 export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
-export NODE_PATH=/usr/local/lib/node_modules
+export NODE_PATH=/usr/local/share/npm/bin
+export PATH="${PATH}:${NODE_PATH}"
+export PATH="${PATH}:/Users/max/.sm/bin:/Users/max/.sm/pkg/active/bin:/Users/max/.sm/pkg/active/sbin"
 
 # history
 HISTFILE=$HOME/.zsh_history
