@@ -6,8 +6,22 @@ alias ll='ls -l'
 
 alias mongo_start="mongod --fork --config /usr/local/etc/mongod.conf --logpath /dev/null"
 alias mongo_stop="kill -2 \$(ps x | grep -v 'grep' | grep mongo | xargs | cut -d' ' -f1)"
+
 alias pg_start="pg_ctl -D /usr/local/var/postgres start > /dev/null"
-alias pg_stop="pg_ctl -D /usr/local/var/postgres stop > /dev/null"
+alias pg_stop="pg_ctl -D /usr/local/var/postgres stop -s -m fast > /dev/null"
+
+alias redis_start="redis-server /usr/local/etc/redis.conf"
+redis_stop() {
+  if [ ! -e "/usr/local/var/run/redis.pid" ]
+  then
+    echo "redis-server isn't running"
+  else
+    REDIS_CLI=`which redis-cli`
+    CONFIG_FILE=/usr/local/etc/redis.conf
+    LISTENING_PORT=`grep -E "^ *port +([0-9]+) *$" "$CONFIG_FILE" | grep -Eo "[0-9]+"`
+    $REDIS_CLI -p $LISTENING_PORT SHUTDOWN
+  fi
+}
 
 alias gti='git'
 alias gst='git status'
