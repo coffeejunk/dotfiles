@@ -61,7 +61,7 @@ set clipboard=unnamed
 set nofoldenable
 
 " setup the leader key
-let mapleader = ","
+" let mapleader = ","
 
 """""""""""""""""""""""""""""""""""""""""""
 " CUSTOM AUTOCMDS
