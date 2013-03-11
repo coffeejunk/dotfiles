@@ -45,6 +45,7 @@ set modelines=10
 set backup
 set backupdir=~/.vim/backup
 set directory=~/.vim/backup
+set undodir=~/.vim/undo
 
 " Prevent Vim from clobbering the scrollback buffer. See
 " http://www.shallowsky.com/linux/noaltscreen.html
@@ -132,7 +133,7 @@ nnoremap <leader>v V`]
 nmap <leader>v :tabedit $MYVIMRC<CR>
 
 " reformat current paragraph
-nmap <leader>l gqip
+map <leader>l gqip
 
 " remove trailing whitespace
 nnoremap <silent> <F6> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
@@ -141,6 +142,18 @@ nnoremap <silent> <F6> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 nmap <silent> <leader>s :set spell!<CR>
 " Set region to American English
 set spelllang=en_us
+
+"Works in normal mode, must press Esc first"
+:map <M-s> :w<kEnter>
+"Works in insert mode, saves and puts back in insert mode"
+:imap <M-s> <Esc>:w<kEnter>i
+
+nmap <leader>0 %!python -m json.tool<CR>
+
+nmap <leader>o :set paste!<CR>
+
+nmap <C-n> :bnext<CR>
+nmap <C-p> :bprev<CR>
 
 """""""""""""""""""""""""""""""""""""""""""
 " MOVES
@@ -210,10 +223,12 @@ au BufRead,BufNewFile *.hamlc set ft=haml
 """""""""""""""""""""""""""""""""""""""""""
 " PLUGIN CONFIGURATION
 """""""""""""""""""""""""""""""""""""""""""
+" use https://github.com/ggreer/the_silver_searcher instead of ack
+let g:ackprg = 'ag --nogroup --nocolor --column'
 
 set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,*.jpg,*.png
 set wildignore+=*.gif,*.toc,*.aux,*.bbl,*.dvi,*.pdf,*.lof,*.blg,*.out,*.log
-set wildignore+=*.gitkeep,*.jpeg,tags,*.dat
+set wildignore+=*.gitkeep,*.jpeg,tags,*.dat,coverage/*
 
 " set open command for ruby_doc
 let g:ruby_doc_command='open'
@@ -225,8 +240,8 @@ let g:syntastic_mode_map = { 'mode': 'active',
                            \ 'passive_filetypes': ['puppet'] }
 
 " ctrl+p ignore settings
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.sass-cache/*,*.DS_Store  " MacOSX/Linux
-set wildignore+=tmp\*,*.swp,*.zip,*.exe   " Windows
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.sass-cache/*,*.DS_Store
+set wildignore+=tmp\*,*.swp,*.zip,*.exe,*.gem
 
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|\.hg$\|\.svn$',
