@@ -35,3 +35,5 @@ change_git_mail() {
 alias home="change_git_mail 'mxhaack@gmail.com'"
 
 alias remove_trailing_whitespace="find . -name \"*.rb\" -exec sed -i \"\" 's/[ ]*$//' {} \\;"
+
+alias be='bundle exec'
