@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -e
+
+BRANCH=`git branch | grep '*' | cut -d' ' -f2`
+
+git fetch propertybase
+git checkout master
+git merge propertybase/master
+git push origin master
+
+if [ "$BRANCH" != "master" ]; then
+  git branch -d $BRANCH
+  rm .git/refs/remotes/origin/$BRANCH
+fi
