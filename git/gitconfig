@@ -26,5 +26,7 @@
   diff = auto
   status = auto
   branch = auto
+[heroku]
+	account = personal
 [push]
 	default = simple
