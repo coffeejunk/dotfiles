@@ -106,3 +106,6 @@
 [submodule "vim/bundle/vim-toml"]
 	path = vim/bundle/vim-toml
 	url = git://github.com/cespare/vim-toml.git
+[submodule "vim/bundle/vim-colorpack"]
+	path = vim/bundle/vim-colorpack
+	url = https://github.com/derekprior/vim-colorpack.git
