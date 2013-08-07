@@ -131,6 +131,9 @@ nnoremap <leader>v V`]
 " open vimrc
 nmap <leader>v :tabedit $MYVIMRC<CR>
 
+" open TODO file
+nmap <leader>e :tabedit ~/Dropbox/todo.md<CR>
+
 " reformat current paragraph
 map <leader>l gqip
 
