@@ -1,5 +1,7 @@
 alias scpresume="rsync --partial --progress --rsh=ssh"
 
+alias :q="exit"
+
 alias ls='ls -G'
 alias l='ls -la'
 alias ll='ls -l'
