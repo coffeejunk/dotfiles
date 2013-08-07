@@ -231,10 +231,6 @@ au BufRead,BufNewFile *.hamlc set ft=haml
 " use https://github.com/ggreer/the_silver_searcher instead of ack
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
-set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,*.jpg,*.png
-set wildignore+=*.gif,*.toc,*.aux,*.bbl,*.dvi,*.pdf,*.lof,*.blg,*.out,*.log
-set wildignore+=*.gitkeep,*.jpeg,tags,*.dat,coverage/*
-
 " set open command for ruby_doc
 let g:ruby_doc_command='open'
 
@@ -245,6 +241,9 @@ let g:syntastic_mode_map = { 'mode': 'active',
                            \ 'passive_filetypes': ['puppet'] }
 
 " ctrl+p ignore settings
+set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,*.jpg,*.png
+set wildignore+=*.gif,*.toc,*.aux,*.bbl,*.dvi,*.pdf,*.lof,*.blg,*.out,*.log
+set wildignore+=*.gitkeep,*.jpeg,tags,*.dat,coverage/*
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.sass-cache/*,*.DS_Store
 set wildignore+=tmp\*,*.swp,*.zip,*.exe,*.gem
 
