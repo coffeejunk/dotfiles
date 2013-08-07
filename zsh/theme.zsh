@@ -40,14 +40,20 @@ function git_custom_status() {
   fi
 }
 
+function rbenv_custom_status() {
+  if which rbenv > /dev/null; then
+    echo "%{$fg[green]%}[`rbenv version | cut -d' ' -f1`]%{$reset_color%} $EPS1"
+  fi
+}
+
+# if $(test -e .ruby-version) ; then
+#   rbenv_status='$(rbenv_custom_status)'
+# fi
+
 if [[ -n '$(hash git)' ]]; then
   git_status='$(git_custom_status)'
 fi
 
-if [[ -s ~/.rvm/scripts/rvm ]] ; then
-  rvm_status='%{$fg[green]%}[`~/.rvm/bin/rvm-prompt`]%{$reset_color%} $EPS1'
-fi
-
-RPS1=$git_status$rvm_status
+RPS1=$git_status$rbenv_status
 
 PROMPT='%{$fg[cyan]%}[%~% ]%(?.%{$fg[green]%}.%{$fg[red]%})%B$%b '
