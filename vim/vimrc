@@ -125,9 +125,6 @@ map <leader><space> :noh<cr>
 " use ack
 nnoremap <leader>a :Ack
 
-" makes ,w split windows vertically
-nnoremap <leader>w <C-w>v<C-w>l
-
 " reselect pasted text
 nnoremap <leader>v V`]
 
