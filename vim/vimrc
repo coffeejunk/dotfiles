@@ -104,7 +104,9 @@ if has("gui_running")
 else
   " set background=light
   " call togglebg#map("<F5>")
-  color Tomorrow-Night
+  " color Tomorrow-Night
+  color github
+  syntax enable
 endif
 
 " Show (partial) command in the status line
