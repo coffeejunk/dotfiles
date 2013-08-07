@@ -29,7 +29,7 @@ redis_stop() {
 }
 
 alias gti='git'
-alias gst='git status'
+alias gst='git status -sb'
 alias gp='git push'
 alias gb='git branch'
 alias gs="gst"
