@@ -12,6 +12,9 @@ alias mongo_stop="kill -2 \$(ps x | grep -v 'grep' | grep mongo | xargs | cut -d
 alias pg_start="pg_ctl -D /usr/local/var/postgres start > /dev/null"
 alias pg_stop="pg_ctl -D /usr/local/var/postgres stop -s -m fast > /dev/null"
 
+alias es_start="elasticsearch -D es.config=/usr/local/opt/elasticsearch/config/elasticsearch.yml"
+alias es_stop="kill -3 \$(ps x | grep '[e]lasticsearch' | xargs | cut -d' ' -f1)"
+
 alias redis_start="redis-server /usr/local/etc/redis.conf"
 redis_stop() {
   if [ ! -e "/usr/local/var/run/redis.pid" ]
