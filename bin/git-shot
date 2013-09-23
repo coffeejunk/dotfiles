@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+require 'tumblr_client'
+require 'fileutils'
+require 'psych'
+
+config = Psych.load File.read(File.expand_path('~/.tumblr'))
+
+client = Tumblr::Client.new Hash[config.map { |k,v| [k.to_sym, v] }]
+
+sha = `git rev-parse HEAD`.strip
+proj_path = Dir.pwd.split('/').last
+path = File.expand_path("~/Dropbox/commit_imgs/" + proj_path)
+
+FileUtils.mkdir_p path
+file = path + '/' + sha + '.jpg'
+
+Process.fork {
+  system "imagesnap -q #{file}"
+
+  client.photo 'git-commit.tumblr.com', { data: [file] }
+}
+exit 0

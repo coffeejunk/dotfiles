@@ -1,3 +1,3 @@
 #!/bin/sh
 git commit -v "$@"
-lolcommits --capture --fork > /dev/null
+git shot

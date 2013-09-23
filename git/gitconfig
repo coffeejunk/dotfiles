@@ -8,8 +8,7 @@
   ra = !git r --all
   aa = add --all
   co = checkout
-  ci = commit -v
-  amend = commit -v --amend
+  amend = ci --amend
   di = diff
   dc = diff --cached
   diffc = diff --cached
@@ -18,7 +17,7 @@
 [apply]
   whitespace = nowarn
 [core]
-  excludesfile = ~/.gitignore
+  excludesfile = ~/.global-git-ignore
   editor = vim -f
 [github]
   user = coffeejunk
