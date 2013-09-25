@@ -22,7 +22,7 @@ export PATH=$PATH:/Users/max/code/Work/propertybase-utils/bin
 
 # export CFLAGS="-march=native -O2"
 export CFLAGS="-march=nocona -O2 -pipe"
-export EDITOR="mvim"
+export EDITOR="vim"
 bindkey -e
 
 # history
