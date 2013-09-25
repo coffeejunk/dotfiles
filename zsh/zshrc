@@ -4,17 +4,21 @@ X11=/usr/X11/bin
 export CLASSPATH=$CLASSPATH:/usr/local/Cellar/clojure-contrib/1.2.0/clojure-contrib.jar
 # export JAVACMD=drip
 # export DYLD_LIBRARY_PATH=/usr/local/share/instaclient
+export GOROOT=$HOME/code/github/go
+export PATH=$PATH:$GOROOT/bin
+export GOPATH=$HOME/code/go
+export PATH=$PATH:$GOPATH/bin
 
 # putting it all together
 export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
 export NODE_PATH=/usr/local/share/npm/bin
-export GOPATH=/usr/local/Cellar/go/1.1.1/
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/sbin:$PATH
 export PATH=$PATH:$LATEX:$X11:~/dotfiles/bin
-export PATH="${PATH}:${NODE_PATH}":$GOROOT/bin
+export PATH="${PATH}:${NODE_PATH}"
 # export PATH="/Users/max/.tmuxifier/bin:$PATH"
 export PATH=$PATH:/Users/max/code/clojurescript/bin
-export PATH=$PATH:/usr/local/Cellar/go/1.1.1/bin
+
+export PATH=$PATH:/Users/max/code/Work/propertybase-utils/bin
 
 # export CFLAGS="-march=native -O2"
 export CFLAGS="-march=nocona -O2 -pipe"
