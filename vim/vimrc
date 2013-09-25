@@ -56,7 +56,9 @@ set wildmode=list:longest,list:full
 set wildmenu
 
 " use system clipboard for yanking
-set clipboard=unnamed
+if $TMUX == ''
+  set clipboard+=unnamed
+endif
 
 " i hate folding.
 set nofoldenable
