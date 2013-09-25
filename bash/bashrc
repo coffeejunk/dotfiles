@@ -89,5 +89,6 @@ alias refresh='. ~/.bashrc'
 export CLICOLOR=1
 export LSCOLORS=DxGxcxdxCxegedabagacad
 
-#rvm
-[[ -s /Users/max/.rvm/scripts/rvm ]] && source /Users/max/.rvm/scripts/rvm  # This loads RVM into a shell session.
+# rbenv
+export RBENV_ROOT=/usr/local/var/rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
