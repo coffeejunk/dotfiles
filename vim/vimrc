@@ -283,6 +283,25 @@ function! RenameFile()
 endfunction
 map <leader>n :call RenameFile()<cr>
 
+" Run a given vim command on the results of fuzzy selecting from a given shell
+" command. See usage below.
+function! SelectaCommand(choice_command, vim_command)
+  try
+    silent! exec a:vim_command . " " . system(a:choice_command . " | selecta")
+  catch /Vim:Interrupt/
+    " Swallow the ^C so that the redraw below happens; otherwise there will be
+    " leftovers from selecta on the screen
+  endtry
+  redraw!
+endfunction
+
+" Find all files in all non-dot directories starting in the working directory.
+" Fuzzy select one of those. Open the selected file with :e.
+map <leader>f :call SelectaCommand("find * -type f", ":e")<cr>
+map <leader>F :call SelectaCommand("find * -type f", ":tabedit")<cr>
+map <leader>V :call SelectaCommand("find * -type f", ":vsplit")<cr>
+map <leader>H :call SelectaCommand("find * -type f", ":split")<cr>
+
 """""""""""""
 " RELATIVE/NON RELATIVE LINE NUMBERS
 """""""""""""
