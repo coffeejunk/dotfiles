@@ -18,8 +18,6 @@ export PATH="${PATH}:${NODE_PATH}"
 # export PATH="/Users/max/.tmuxifier/bin:$PATH"
 export PATH=$PATH:/Users/max/code/clojurescript/bin
 
-export PATH=$PATH:/Users/max/code/Work/propertybase-utils/bin
-
 # export CFLAGS="-march=native -O2"
 export CFLAGS="-march=nocona -O2 -pipe"
 export EDITOR="vim"
@@ -66,3 +64,6 @@ if [ -e ~/.zsh/work ]; then
 fi
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
