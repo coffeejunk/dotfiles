@@ -259,11 +259,6 @@ set wildignore+=*.gitkeep,*.jpeg,tags,*.dat,coverage/*
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.sass-cache/*,*.DS_Store
 set wildignore+=tmp\*,*.swp,*.zip,*.exe,*.gem
 
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn$',
-  \ 'file': '\.exe$\|\.so$\|\.dll$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
 
 """""""""""""""""""""""""""""""""""""""""""
 " FUNCTIONS
