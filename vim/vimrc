@@ -259,6 +259,11 @@ set wildignore+=*.gitkeep,*.jpeg,tags,*.dat,coverage/*
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.sass-cache/*,*.DS_Store
 set wildignore+=tmp\*,*.swp,*.zip,*.exe,*.gem
 
+let ruby_operators = 1
+let ruby_space_errors = 1
+
+let g:splitjoin_split_mapping = ''
+let g:splitjoin_join_mapping = ''
 
 """""""""""""""""""""""""""""""""""""""""""
 " FUNCTIONS
