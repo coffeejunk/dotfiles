@@ -7,8 +7,8 @@ require 'fileutils'
 require 'psych'
 
 config = Psych.load File.read(File.expand_path('~/.tumblr'))
-
-client = Tumblr::Client.new Hash[config.map { |k,v| [k.to_sym, v] }]
+config = Hash[config.map { |k,v| [k.to_sym, v] }]
+client = Tumblr::Client.new config
 
 sha = `git rev-parse HEAD`.strip
 proj_path = Dir.pwd.split('/').last
@@ -21,7 +21,7 @@ Process.fork {
   system "imagesnap -q #{file}"
 
   begin
-    client.photo 'git-commit.tumblr.com', { data: [file] }
+    client.photo config[:url], { data: [file] }
   rescue Faraday::Error::ConnectionFailed
   end
 }
