@@ -20,6 +20,9 @@ file = path + '/' + sha + '.jpg'
 Process.fork {
   system "imagesnap -q #{file}"
 
-  client.photo 'git-commit.tumblr.com', { data: [file] }
+  begin
+    client.photo 'git-commit.tumblr.com', { data: [file] }
+  rescue Faraday::Error::ConnectionFailed
+  end
 }
 exit 0
