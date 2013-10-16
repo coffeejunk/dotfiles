@@ -10,8 +10,9 @@
   co = checkout
   amend = ci --amend
   di = diff
+  id = di
   dc = diff --cached
-  diffc = diff --cached
+  cd = dc
   pull = pull --ff-only
   fa = fetch --all
 [apply]
