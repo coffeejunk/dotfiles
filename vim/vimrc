@@ -133,7 +133,7 @@ map <leader><space> :noh<cr>
 nnoremap <leader>a :Ack
 
 " reselect pasted text
-nnoremap <leader>v V`]
+nnoremap <leader>p V`]
 
 " open vimrc
 nmap <leader>v :tabedit $MYVIMRC<CR>
