@@ -7,6 +7,7 @@
   r = !git l -30
   ra = !git r --all
   aa = add --all
+  ap = !git aa -p
   co = checkout
   amend = ci --amend
   di = diff
