@@ -42,3 +42,7 @@ alias home="change_git_mail 'mxhaack@gmail.com'"
 alias remove_trailing_whitespace="find . -name \"*.rb\" -exec sed -i \"\" 's/[ ]*$//' {} \\;"
 
 alias be='bundle exec'
+
+alias ip="curl http://wtfismyip.com/json"
+alias cd..="cd .."
+alias sl='ls'
