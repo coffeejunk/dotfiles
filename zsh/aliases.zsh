@@ -46,3 +46,4 @@ alias be='bundle exec'
 alias ip="curl http://wtfismyip.com/json"
 alias cd..="cd .."
 alias sl='ls'
+alias rubby='ruby'
