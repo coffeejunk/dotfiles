@@ -2,13 +2,18 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-require 'tumblr_client'
+begin
+  require 'tumblr_client'
+rescue LoadError
+  puts 'no tumblr client installed'
+end
+
 require 'fileutils'
 require 'psych'
 
 config = Psych.load File.read(File.expand_path('~/.tumblr'))
 config = Hash[config.map { |k,v| [k.to_sym, v] }]
-client = Tumblr::Client.new config
+client = Tumblr::Client.new config rescue nil
 
 sha = `git rev-parse HEAD`.strip
 proj_path = Dir.pwd.split('/').last
@@ -22,7 +27,7 @@ Process.fork {
 
   begin
     client.photo config[:url], { data: [file] }
-  rescue Faraday::Error::ConnectionFailed
+  rescue NameError, Faraday::Error::ConnectionFailed
   end
 }
 exit 0
