@@ -88,6 +88,29 @@ if has("autocmd")
   autocmd bufwritepost .vimrc source $MYVIMRC
 endif
 
+nnoremap <Leader>z :Goyo<CR>
+":silent !tmux set status > /dev/null 2>&1<CR>:redraw!<CR>
+
+function! g:goyo_before()
+  set background=light
+  if has('gui_running')
+    set linespace=7
+  elseif exists('$TMUX')
+    silent !tmux set status off
+  endif
+endfunction
+
+function! g:goyo_after()
+  set background=dark
+  if has('gui_running')
+    set linespace=0
+  elseif exists('$TMUX')
+    silent !tmux set status on
+  endif
+endfunction
+
+let g:goyo_callbacks = [function('g:goyo_before'), function('g:goyo_after')]
+
 """""""""""""""""""""""""""""""""""""""""""
 " LOOKS
 """""""""""""""""""""""""""""""""""""""""""
@@ -112,7 +135,8 @@ else
   " set background=light
   " call togglebg#map("<F5>")
   " color Tomorrow-Night
-  color grb256
+  " color grb256
+  color seoul256
   syntax enable
 endif
 
@@ -208,14 +232,10 @@ au FileType make set noexpandtab
 
 " Enable syntastic syntax checking
 let g:syntastic_enable_signs=1
-let g:syntastic_quiet_warnings=1
+let g:syntastic_quiet_messages = {'level': 'warnings'}
 
 " Thorfile, Rakefile, Vagrantfile and Gemfile are Ruby
 au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru} set ft=ruby
-
-" Ruby
-let g:rubycomplete_classes_in_global = 1
-let g:rubycomplete_rails = 1
 
 " add json syntax highlighting
 au BufNewFile,BufRead *.json set ft=javascript
@@ -285,22 +305,26 @@ map <leader>n :call RenameFile()<cr>
 
 " Run a given vim command on the results of fuzzy selecting from a given shell
 " command. See usage below.
-function! SelectaCommand(choice_command, vim_command)
+function! SelectaCommand(choice_command, selecta_args, vim_command)
   try
-    silent! exec a:vim_command . " " . system(a:choice_command . " | selecta")
+    silent let selection = system(a:choice_command . " | selecta " . a:selecta_args)
   catch /Vim:Interrupt/
     " Swallow the ^C so that the redraw below happens; otherwise there will be
     " leftovers from selecta on the screen
+    redraw!
+    return
   endtry
   redraw!
+  exec a:vim_command . " " . selection
 endfunction
 
 " Find all files in all non-dot directories starting in the working directory.
 " Fuzzy select one of those. Open the selected file with :e.
-map <leader>f :call SelectaCommand("find * -type f", ":e")<cr>
-map <leader>F :call SelectaCommand("find * -type f", ":tabedit")<cr>
-map <leader>V :call SelectaCommand("find * -type f", ":vsplit")<cr>
-map <leader>H :call SelectaCommand("find * -type f", ":split")<cr>
+let selecta_find = "find * -type f -not -path \"coverage/*\""
+nnoremap <leader>f :call SelectaCommand(selecta_find, "", ":e")<cr>
+nnoremap <leader>F :call SelectaCommand(selecta_find, "", ":tabedit")<cr>
+nnoremap <leader>V :call SelectaCommand(selecta_find, "", ":vsplit")<cr>
+nnoremap <leader>H :call SelectaCommand(selecta_find, "", ":split")<cr>
 
 """""""""""""
 " RELATIVE/NON RELATIVE LINE NUMBERS

@@ -4,5 +4,5 @@ set guioptions-=l         " Remove left scrollbar
 set guioptions-=L         " Remove left scrollbar
 set guioptions-=e         " text tabs
 set guifont=Menlo:h12    " font size
-color codeschool
+color seoul256
 set vb
