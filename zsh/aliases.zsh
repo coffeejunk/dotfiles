@@ -47,3 +47,4 @@ alias ip="curl http://wtfismyip.com/json"
 alias cd..="cd .."
 alias sl='ls'
 alias rubby='ruby'
+alias clera='clear'
