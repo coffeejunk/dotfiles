@@ -16,6 +16,7 @@
   cd = dc
   pull = pull --ff-only
   fa = fetch --all
+  cp = cherry-pick
 [apply]
   whitespace = nowarn
 [core]
