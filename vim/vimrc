@@ -1,6 +1,5 @@
 filetype off
 filetype plugin indent off
-set runtimepath+=$GOROOT/misc/vim
 
 " load plugins
 call pathogen#infect()
@@ -52,10 +51,6 @@ set backupdir=~/.vim/backup
 set directory=~/.vim/backup
 set undodir=~/.vim/undo
 
-" Prevent Vim from clobbering the scrollback buffer. See
-" http://www.shallowsky.com/linux/noaltscreen.html
-set t_ti= t_te=
-
 " Tab completion
 set wildmode=list:longest,list:full
 set wildmenu
@@ -88,29 +83,6 @@ if has("autocmd")
   autocmd bufwritepost .vimrc source $MYVIMRC
 endif
 
-nnoremap <Leader>z :Goyo<CR>
-":silent !tmux set status > /dev/null 2>&1<CR>:redraw!<CR>
-
-function! g:goyo_before()
-  set background=light
-  if has('gui_running')
-    set linespace=7
-  elseif exists('$TMUX')
-    silent !tmux set status off
-  endif
-endfunction
-
-function! g:goyo_after()
-  set background=dark
-  if has('gui_running')
-    set linespace=0
-  elseif exists('$TMUX')
-    silent !tmux set status on
-  endif
-endfunction
-
-let g:goyo_callbacks = [function('g:goyo_before'), function('g:goyo_after')]
-
 """""""""""""""""""""""""""""""""""""""""""
 " LOOKS
 """""""""""""""""""""""""""""""""""""""""""
@@ -132,12 +104,8 @@ set cul
 if has("gui_running")
   source ~/.gvimrc
 else
-  " set background=light
-  " call togglebg#map("<F5>")
-  " color Tomorrow-Night
-  " color grb256
-  color seoul256
   syntax enable
+  color grb256
 endif
 
 " Show (partial) command in the status line
@@ -181,12 +149,9 @@ set spelllang=en_us
 "Works in insert mode, saves and puts back in insert mode"
 " :imap <M-s> <Esc>:w<kEnter>i
 
-nmap <leader>0 %!python -m json.tool<CR>
+nmap <leader>0 :Jacint format<CR>
 
 nmap <leader>o :set paste!<CR>
-
-" nmap <C-n> :bnext<CR>
-" nmap <C-p> :bprev<CR>
 
 """""""""""""""""""""""""""""""""""""""""""
 " MOVES
@@ -243,11 +208,6 @@ au BufNewFile,BufRead *.json set ft=javascript
 " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
 au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
 
-" make go follow go guidelines
-" au FileType nset softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
-autocmd FileType go setlocal noexpandtab shiftwidth=4 tabstop=4 softtabstop=4 nolist
-autocmd FileType go autocmd BufWritePre <buffer> Fmt
-
 " C settings
 au FileType c set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
 
@@ -281,9 +241,6 @@ set wildignore+=tmp\*,*.swp,*.zip,*.exe,*.gem
 
 let ruby_operators = 1
 let ruby_space_errors = 1
-
-let g:splitjoin_split_mapping = ''
-let g:splitjoin_join_mapping = ''
 
 """""""""""""""""""""""""""""""""""""""""""
 " FUNCTIONS
@@ -327,22 +284,9 @@ nnoremap <leader>V :call SelectaCommand(selecta_find, "", ":vsplit")<cr>
 nnoremap <leader>H :call SelectaCommand(selecta_find, "", ":split")<cr>
 
 """""""""""""
-" RELATIVE/NON RELATIVE LINE NUMBERS
-"""""""""""""
-"relative number switching
-function! g:ToggleNuMode()
-  if(&rnu == 1)
-    set nu
-  else
-    set rnu
-  endif
-endfunction
-nnoremap <C-a> :call g:ToggleNuMode()<cr>
-
-"""""""""""""
 " TEST RUNNER
 """""""""""""
-map <leader><CR> :call RunTest()<cr>
+map <leader>t :call RunTest()<cr>
 
 function! RunTest()
   :wa

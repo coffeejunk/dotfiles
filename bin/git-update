@@ -11,5 +11,4 @@ git push origin master
 
 if [ "$BRANCH" != "master" ]; then
   git branch -d $BRANCH
-  rm .git/refs/remotes/origin/$BRANCH
 fi
