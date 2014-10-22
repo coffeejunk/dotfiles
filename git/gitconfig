@@ -2,7 +2,7 @@
   name = Maximilian Haack
   email = mxhaack@gmail.com
 [alias]
-  l = "!source ~/.githelpers && pretty_git_log"
+  l = "!source ~/dotfiles/git/githelpers && pretty_git_log"
   la = !git l --all
   r = !git l -30
   ra = !git r --all
@@ -15,12 +15,17 @@
   dc = diff --cached
   cd = dc
   pull = pull --ff-only
+  fetch = fetch --prune --all
   fa = fetch --all
   cp = cherry-pick
+  s = show
+	pish = push
+  cur = rev-parse --abbrev-ref HEAD
+  p = "!git push origin $(git cur)"
 [apply]
   whitespace = nowarn
 [core]
-  excludesfile = ~/.global-git-ignore
+  excludesfile = ~/dotfiles/git/global-git-ignore
   editor = vim -f
 [github]
   user = coffeejunk
