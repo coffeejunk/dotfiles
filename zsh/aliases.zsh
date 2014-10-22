@@ -48,3 +48,6 @@ alias cd..="cd .."
 alias sl='ls'
 alias rubby='ruby'
 alias clera='clear'
+alias claer='clear'
+alias budnle='bundle'
+alias penguin='curl -L http://flightleverage.com/penguin'
