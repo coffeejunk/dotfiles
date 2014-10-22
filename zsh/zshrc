@@ -46,4 +46,10 @@ if [ -e ~/.zsh/work ]; then
   done
 fi
 
+autoload -Uz compinit
+compinit
+fpath=(/usr/local/share/zsh-completions $fpath)
+plugins=(git ag ssh)
+zstyle ':completion:*' use-cache yes
+
 if which rbenv > /dev/null; then eval "$(rbenv init - zsh)"; fi
