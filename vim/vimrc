@@ -106,6 +106,7 @@ if has("gui_running")
 else
   syntax enable
   color grb256
+  highlight ColorColumn ctermbg=8
 endif
 
 " Show (partial) command in the status line
