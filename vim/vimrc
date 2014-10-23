@@ -271,7 +271,7 @@ endfunction
 
 " Find all files in all non-dot directories starting in the working directory.
 " Fuzzy select one of those. Open the selected file with :e.
-let selecta_find = "find * -type f -not -path \"coverage/*\""
+let selecta_find = "find * -type f -not -path 'coverage/*' -not -path '*/\.*'"
 nnoremap <leader>f :call SelectaCommand(selecta_find, "", ":e")<cr>
 nnoremap <leader>F :call SelectaCommand(selecta_find, "", ":tabedit")<cr>
 nnoremap <leader>V :call SelectaCommand(selecta_find, "", ":vsplit")<cr>
