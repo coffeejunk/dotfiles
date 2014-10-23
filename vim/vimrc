@@ -233,13 +233,6 @@ let g:syntastic_mode_map = { 'mode': 'active',
                            \ 'eruby', 'haml', 'javascript', 'html'],
                            \ 'passive_filetypes': ['puppet'] }
 
-" ctrl+p ignore settings
-set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,*.jpg,*.png
-set wildignore+=*.gif,*.toc,*.aux,*.bbl,*.dvi,*.pdf,*.lof,*.blg,*.out,*.log
-set wildignore+=*.gitkeep,*.jpeg,tags,*.dat,coverage/*
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.sass-cache/*,*.DS_Store
-set wildignore+=tmp\*,*.swp,*.zip,*.exe,*.gem
-
 let ruby_operators = 1
 let ruby_space_errors = 1
 
