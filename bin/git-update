@@ -4,11 +4,17 @@ set -e
 
 BRANCH=`git branch | grep '*' | cut -d' ' -f2`
 
-git fetch upstream --prune
-git fetch origin --prune
 git checkout master
-git merge upstream/master
-git push origin master
+git fetch origin --prune
+
+if [ `git remote | grep 'upstream'` ]; then
+  git fetch upstream --prune
+  git merge upstream/master
+  git push origin master
+else
+  git merge origin/master
+fi
+
 if [ "$BRANCH" != "master" ]; then
   git branch -d $BRANCH
 fi
