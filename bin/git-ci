@@ -1,3 +1,5 @@
 #!/bin/sh
 git commit -v "$@"
-git shot
+if [ "$?" = 0 ]; then
+  git shot
+fi
