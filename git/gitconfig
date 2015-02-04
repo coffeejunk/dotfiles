@@ -22,6 +22,7 @@
 	pish = push
   cur = rev-parse --abbrev-ref HEAD
   p = "!git push origin $(git cur)"
+  pr = "!hub pull-request -o"
 [apply]
   whitespace = nowarn
 [core]
