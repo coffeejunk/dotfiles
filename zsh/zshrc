@@ -1,5 +1,6 @@
 # Customize to your needs...
 export RBENV_ROOT=/usr/local/var/rbenv
+export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/lib"
 export GOPATH=$HOME/code/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:~/dotfiles/bin
