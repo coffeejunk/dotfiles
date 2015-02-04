@@ -215,6 +215,9 @@ au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 " hamlc syntax highlighting
 au BufRead,BufNewFile *.hamlc set ft=haml
 
+" au FileType rust setlocal kp="!open http://doc.rust-lang.org/std/?search="
+au FileType rust setlocal kp=viewrustdoc
+
 """""""""""""""""""""""""""""""""""""""""""
 " PLUGIN CONFIGURATION
 """""""""""""""""""""""""""""""""""""""""""
