@@ -1,0 +1,1 @@
+/Users/max/code/github/rust/src/etc/vim/plugin/rust.vim
