@@ -63,9 +63,6 @@ endif
 " i hate folding.
 set nofoldenable
 
-" setup the leader key
-" let mapleader = ","
-
 """""""""""""""""""""""""""""""""""""""""""
 " CUSTOM AUTOCMDS
 """""""""""""""""""""""""""""""""""""""""""
