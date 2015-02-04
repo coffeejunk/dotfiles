@@ -29,8 +29,8 @@ set softtabstop=2
 set expandtab
 
 " list and invisible characters
-set list
-set listchars=tab:▸\ ,trail:·,eol:¬
+" set list
+" set listchars=tab:▸\ ,trail:·,eol:¬
 
 " Searching
 set hlsearch
