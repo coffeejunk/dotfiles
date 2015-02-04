@@ -6,12 +6,3 @@ IRB.conf[:SAVE_HISTORY] = 1000
 IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb-save-history"
 IRB.conf[:PROMPT_MODE]  = :SIMPLE
 IRB.conf[:USE_READLINE] = true
-def clears
-  system 'clear'
-end
-begin
-  require "awesome_print"
-  AwesomePrint.irb!
-rescue LoadError
-  puts "'awesome_print' is not installed"
-end
