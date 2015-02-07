@@ -1,1 +1,0 @@
-/Users/max/code/github/rust/src/etc/vim/ftplugin/rust.vim
