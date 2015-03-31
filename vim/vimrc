@@ -26,6 +26,8 @@ Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'dbakker/vim-paragraph-motion'
 
+Plugin 'regedarek/ZoomWin'
+
 " Format and validate JSON files
 Plugin 'alfredodeza/jacinto.vim'
 
