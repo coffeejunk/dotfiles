@@ -30,3 +30,4 @@ highlight DiffDelete term=reverse cterm=bold ctermbg=lightred ctermfg=16
 
 highlight PmenuSel ctermfg=16 ctermbg=156
 
+hi Search         guifg=white       guibg=#ffeed6     gui=BOLD      ctermfg=16         ctermbg=150    cterm=NONE
