@@ -6,3 +6,4 @@ vim/backup
 vim/.netrwhist
 zsh/work/
 vim/undo
+/vim/bundle
