@@ -28,6 +28,9 @@ Plugin 'dbakker/vim-paragraph-motion'
 
 Plugin 'regedarek/ZoomWin'
 
+Plugin 'junegunn/goyo.vim'
+Plugin 'junegunn/limelight.vim'
+
 " Format and validate JSON files
 Plugin 'alfredodeza/jacinto.vim'
 
@@ -35,13 +38,16 @@ Plugin 'wting/rust.vim'
 Plugin 'fatih/vim-go'
 Plugin 'tpope/vim-haml'
 Plugin 'pangloss/vim-javascript'
-Plugin 'plasticboy/vim-markdown'
 Plugin 'othree/html5.vim'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'lucapette/vim-ruby-doc'
 Plugin 'tpope/vim-rails'
 Plugin 'cespare/vim-toml'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'plasticboy/vim-markdown'
+
+Plugin 'junegunn/vader.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -71,8 +77,8 @@ set softtabstop=2
 set expandtab
 
 " list and invisible characters
-" set list
-" set listchars=tab:▸\ ,trail:·,eol:¬
+set list
+set listchars=tab:▸\ ,trail:·,eol:¬
 
 " Searching
 set hlsearch
@@ -144,7 +150,8 @@ if has("gui_running")
   source ~/.gvimrc
 else
   syntax enable
-  color grb256
+  color solarized
+  " color grb256
   highlight ColorColumn ctermbg=8
 endif
 
@@ -192,6 +199,8 @@ set spelllang=en_us
 nmap <leader>0 :Jacint format<CR>
 
 nmap <leader>o :set paste!<CR>
+
+map <leader>g :Goyo<CR>
 
 """""""""""""""""""""""""""""""""""""""""""
 " MOVES
@@ -260,6 +269,8 @@ au BufRead,BufNewFile *.hamlc set ft=haml
 " au FileType rust setlocal kp="!open http://doc.rust-lang.org/std/?search="
 au FileType rust setlocal kp=viewrustdoc
 
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
 """""""""""""""""""""""""""""""""""""""""""
 " PLUGIN CONFIGURATION
 """""""""""""""""""""""""""""""""""""""""""
@@ -278,6 +289,32 @@ let g:syntastic_ruby_exec = '/usr/local/var/rbenv/shims/ruby'
 
 let ruby_operators = 1
 let ruby_space_errors = 1
+
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+
+function! s:goyo_enter()
+  silent !tmux set status off
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+  set listchars=tab:▸\ ,trail:·
+  Limelight
+endfunction
+
+function! s:goyo_leave()
+  silent !tmux set status on
+  set showmode
+  set showcmd
+  set scrolloff=3
+  set listchars=tab:▸\ ,trail:·,eol:¬
+  Limelight!
+endfunction
+
+autocmd! User GoyoEnter
+autocmd! User GoyoLeave
+autocmd  User GoyoEnter nested call <SID>goyo_enter()
+autocmd  User GoyoLeave nested call <SID>goyo_leave()
 
 """""""""""""""""""""""""""""""""""""""""""
 " FUNCTIONS
@@ -321,6 +358,13 @@ nnoremap <leader>f :call SelectaCommand(selecta_find, "", ":e")<cr>
 nnoremap <leader>F :call SelectaCommand(selecta_find, "", ":tabedit")<cr>
 nnoremap <leader>V :call SelectaCommand(selecta_find, "", ":vsplit")<cr>
 nnoremap <leader>H :call SelectaCommand(selecta_find, "", ":split")<cr>
+
+"""""""""""""
+" insert byebug
+"""""""""""""
+
+command! InsByebug :normal o require 'byebug'; byebug<ESC>
+nnoremap <leader>b :InsByebug<cr>
 
 """""""""""""
 " TEST RUNNER
